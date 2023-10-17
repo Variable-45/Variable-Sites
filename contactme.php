@@ -1,16 +1,18 @@
 <?php   
-    require("./mailing/mailfunction.php");
+    if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
 
-    $name = $_POST["name"];
-    $phone = $_POST['phone'];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
+    $to = "variablecodecrafters@gmail.com"; // Replace with your recipient's email address
+    $subject = "Client Data";
+    $message = "Name: $name\nEmail: $email";
 
-    $body = "<ul><li>Name: ".$name."</li><li>Phone: ".$phone."</li><li>Email: ".$email."</li><li>Message: ".$message."</li></ul>";
+    $headers = "From: sender@example.com"; // Replace with your sender's email address
 
-    $status = mailfunction("", "Company", $body); //reciever
-    if($status)
-        echo '<center><h1>Thanks! We will contact you soon.</h1></center>';
-    else
-        echo '<center><h1>Error sending message! Please try again.</h1></center>';    
+    // Send the email
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Data submitted successfully. Thank you!";
+    } else {
+        echo "Failed to send data.";
+    }   
 ?>

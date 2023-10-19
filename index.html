@@ -18,6 +18,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <script src="./js/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 <body>
     <header class="header">
@@ -225,12 +226,47 @@
             <input type="text" name="name" id="name" placeholder="Name" class="contact-form-txt" required>
             <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required placeholder="Contact number" maxlength="10" class="contact-form-phone">
             <input type="email" name="email" id="email" placeholder="Email" class="contact-form-email" required>
-            <textarea placeholder="Your Message" name="message" class="contact-form-txtarea" required></textarea>
-            <input type="submit" value="submit" name="submit" class="contact-form-btn">
+            <textarea placeholder="Your Message" name="message" id="message" class="contact-form-txtarea" required></textarea>
+            <input type="submit" value="submit" name="submit" class="contact-form-btn" onclick="SubmitData()">
         </form>
     </div>
     </div>
+    <script>
 
+       function SubmitData()
+       {
+        var text = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email').value;
+        var message = document.getElementById('message').value;
+        if(text = " ")
+        {
+            window.alert("Please Fill Name");
+        }
+
+        else if(phone = " ")
+        {
+            window.alert("Please Fill Phone Number");
+        }
+
+        else if(email = " ")
+        {
+            window.alert("Please Fill email");
+        }
+
+        else if(message = " ")
+        {
+            window.alert("Please Fill text Message");
+        }
+        else{
+            
+            window.alert("Your Form is Submit");
+        }
+       }
+        
+        
+       
+    </script>    
     <section class="faq">
       <h1 class="heading" style="margin-top: -2rem; color: #00bfff;" id="faq">FAQ</h1>
       <div class="row">
